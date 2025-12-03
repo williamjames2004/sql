@@ -1,0 +1,110 @@
+SQL> create table studentss(sname varchar2(20),dno varchar2(10));
+
+Table created.
+
+SQL> create table stud1(sname varchar2(20),dept varchar2(10),marks number);
+
+Table created.
+
+SQL> insert into studentss values('&sname','&dno');
+Enter value for sname: sri
+Enter value for dno: 25pai807
+old   1: insert into studentss values('&sname','&dno')
+new   1: insert into studentss values('sri','25pai807')
+
+1 row created.
+
+SQL> /
+Enter value for sname: jancy
+Enter value for dno: 25pai805
+old   1: insert into studentss values('&sname','&dno')
+new   1: insert into studentss values('jancy','25pai805')
+
+1 row created.
+
+SQL> /
+Enter value for sname: william
+Enter value for dno: 25pai818
+old   1: insert into studentss values('&sname','&dno')
+new   1: insert into studentss values('william','25pai818')
+
+1 row created.
+
+SQL> /
+Enter value for sname: tanuja
+Enter value for dno: 25pai802
+old   1: insert into studentss values('&sname','&dno')
+new   1: insert into studentss values('tanuja','25pai802')
+
+1 row created.
+
+SQL> select * from studentss;
+
+SNAME                DNO                                                        
+-------------------- ----------                                                 
+sri                  25pai807                                                   
+jancy                25pai805                                                   
+william              25pai818                                                   
+tanuja               25pai802                                                   
+
+SQL> insert into stud1 values('&sname','&dept','&marks')
+  2  ;
+Enter value for sname: thrisha
+Enter value for dept: ai
+Enter value for marks: 88
+old   1: insert into stud1 values('&sname','&dept','&marks')
+new   1: insert into stud1 values('thrisha','ai','88')
+
+1 row created.
+
+SQL> /
+Enter value for sname: alice
+Enter value for dept: cs
+Enter value for marks: 99
+old   1: insert into stud1 values('&sname','&dept','&marks')
+new   1: insert into stud1 values('alice','cs','99')
+
+1 row created.
+
+SQL> /
+Enter value for sname: sri
+Enter value for dept: ca
+Enter value for marks: 66
+old   1: insert into stud1 values('&sname','&dept','&marks')
+new   1: insert into stud1 values('sri','ca','66')
+
+1 row created.
+
+SQL> /
+Enter value for sname: jancy
+Enter value for dept: physis
+Enter value for marks: 77
+old   1: insert into stud1 values('&sname','&dept','&marks')
+new   1: insert into stud1 values('jancy','physis','77')
+
+1 row created.
+
+SQL> select *from stud1;
+
+SNAME                DEPT            MARKS                                      
+-------------------- ---------- ----------                                      
+thrisha              ai                 88                                      
+alice                cs                 99                                      
+sri                  ca                 66                                      
+jancy                physis             77                                      
+
+SQL> select studentss.sname,dept from studentss join stud1 on(studentss.sname=stud1.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+sri                  ca                                                         
+jancy                physis                                                     
+
+SQL> select studentss.sname,dept from studentss inner join stud1(studentss.sname=stud1.sname);
+select studentss.sname,dept from studentss inner join stud1(studentss.sname=stud1.sname)
+                                                           *
+ERROR at line 1:
+ORA-00905: missing keyword 
+
+
+SQL> spool off;

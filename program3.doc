@@ -1,0 +1,261 @@
+SQL> create table emp(empno number(4),ename varchar2(10),designaton varchar2(10),salary number(8,2));
+create table emp(empno number(4),ename varchar2(10),designaton varchar2(10),salary number(8,2))
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table employee(empno number(4),ename varchar2(20),designation varchar2(10),salary number(8,2));
+
+Table created.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+ DESIGNATION                                        VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+
+SQL> create table employ as select * from employee;
+
+Table created.
+
+SQL> desc employ;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+ DESIGNATION                                        VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+
+SQL> create table emp1 as select empno,ename,salary from employee;
+
+Table created.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(20)
+ SALARY                                             NUMBER(8,2)
+
+SQL> alter table emp1 modify ename varchar2(15);
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(4)
+ ENAME                                              VARCHAR2(15)
+ SALARY                                             NUMBER(8,2)
+
+SQL> alter table emp1 modify(empno number(6),ename varchar(10));
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+
+SQL> alter table emp1 add qualification varchar2(25);
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ QUALIFICATION                                      VARCHAR2(25)
+
+SQL> alter table emp1 add(dob date,bloodg varchar2(5));
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ QUALIFICATION                                      VARCHAR2(25)
+ DOB                                                DATE
+ BLOODG                                             VARCHAR2(5)
+
+SQL> alter table emp1 drop column bloodg;
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ QUALIFICATION                                      VARCHAR2(25)
+ DOB                                                DATE
+
+SQL> alter table emp1 drop(salary,qualification);
+
+Table altered.
+
+SQL> desc emp1;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ DOB                                                DATE
+
+SQL> rename emp1 to staff;
+
+Table renamed.
+
+SQL> desc staff;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPNO                                              NUMBER(6)
+ ENAME                                              VARCHAR2(10)
+ DOB                                                DATE
+
+SQL> drop table staff;
+
+Table dropped.
+
+SQL> desc staff;
+ERROR:
+ORA-04043: object staff does not exist 
+
+
+SQL> create table student2(sname varchar(20),dno varchar(10)primary key,mark1 number,mark2 number);
+
+Table created.
+
+SQL> insert into student2 values('&name','&dno','&mark1','&mark2');
+Enter value for name: sri
+Enter value for dno: 103
+Enter value for mark1: 66
+Enter value for mark2: 88
+old   1: insert into student2 values('&name','&dno','&mark1','&mark2')
+new   1: insert into student2 values('sri','103','66','88')
+
+1 row created.
+
+SQL> /
+Enter value for name: alice
+Enter value for dno: 104
+Enter value for mark1: 55
+Enter value for mark2: 66
+old   1: insert into student2 values('&name','&dno','&mark1','&mark2')
+new   1: insert into student2 values('alice','104','55','66')
+
+1 row created.
+
+SQL> /
+Enter value for name: bob
+Enter value for dno: 105
+Enter value for mark1: 
+Enter value for mark2: 67
+old   1: insert into student2 values('&name','&dno','&mark1','&mark2')
+new   1: insert into student2 values('bob','105','','67')
+
+1 row created.
+
+SQL> create table student3 values(sname varchar2(20),dno number2(10)references student1(dno),mark1 number,mark2 number);
+create table student3 values(sname varchar2(20),dno number2(10)references student1(dno),mark1 number,mark2 number)
+                      *
+ERROR at line 1:
+ORA-00922: missing or invalid option 
+
+
+SQL> create table student3(sname varcha2(20),dno number(10)references student1(dno),mark1 number,mark2 number);
+create table student3(sname varcha2(20),dno number(10)references student1(dno),mark1 number,mark2 number)
+                                   *
+ERROR at line 1:
+ORA-00907: missing right parenthesis 
+
+
+SQL> create table student3(sname varchar(20),dno number(10)references student1(dno),mark1 number(3),mark2 number(3));
+create table student3(sname varchar(20),dno number(10)references student1(dno),mark1 number(3),mark2 number(3))
+                                                                 *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> create table student3(sname varchar2(20),dno varchar2(10),mark1 number check(mark1>0 and mark1<=100),mark2 number);
+
+Table created.
+
+SQL> insert into student3 values('&sname','&dno',&mark1,&mark2);
+Enter value for sname: john
+Enter value for dno: 101
+Enter value for mark1: 44
+Enter value for mark2: 77
+old   1: insert into student3 values('&sname','&dno',&mark1,&mark2)
+new   1: insert into student3 values('john','101',44,77)
+
+1 row created.
+
+SQL> insert into student3 values('&sname','&dno',&mark1,&mark2)
+  2  ;
+Enter value for sname: thomas
+Enter value for dno: 11ucs100
+Enter value for mark1: 350
+Enter value for mark2: 98
+old   1: insert into student3 values('&sname','&dno',&mark1,&mark2)
+new   1: insert into student3 values('thomas','11ucs100',350,98)
+insert into student3 values('thomas','11ucs100',350,98)
+*
+ERROR at line 1:
+ORA-02290: check constraint (A06.SYS_C0041630) violated 
+
+
+SQL> create table student6(sname varchar2(20),dno varchar(20),mark1 number,mark2 numbernull);
+create table student6(sname varchar2(20),dno varchar(20),mark1 number,mark2 numbernull)
+                                                                            *
+ERROR at line 1:
+ORA-00902: invalid datatype 
+
+
+SQL> create table student6(sname varchar(20),dno varchar(10),mark1 number,mark2 number null);
+
+Table created.
+
+SQL> insert into student6 values('&name','&dno',&mark1,&mark2)
+  2  ;
+Enter value for name: jancy
+Enter value for dno: 103
+Enter value for mark1: 89
+Enter value for mark2: null
+old   1: insert into student6 values('&name','&dno',&mark1,&mark2)
+new   1: insert into student6 values('jancy','103',89,null)
+
+1 row created.
+
+SQL> select * from student6;
+
+SNAME                DNO             MARK1      MARK2                           
+-------------------- ---------- ---------- ----------                           
+jancy                103                89                                      
+
+SQL> create table student7(sname varchar2(20),dno varchar(10),mark1 number,mark2 number,maxmark number default 200);
+
+Table created.
+
+SQL> insert into student7(sname,dno,mark1,mark2)values('sri','25pai807',44,99);
+
+1 row created.
+
+SQL> select * from student7;
+
+SNAME                DNO             MARK1      MARK2    MAXMARK                
+-------------------- ---------- ---------- ---------- ----------                
+sri                  25pai807           44         99        200                
+
+SQL> 
+SQL> spool off;

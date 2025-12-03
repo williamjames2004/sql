@@ -1,0 +1,188 @@
+SQL> create table student8(sname varchar2(13),dno varchar(12),mark1 number,mark2 number);
+
+Table created.
+
+SQL> insert into student8 values('&name','&dno',&mark1,&mark2);
+Enter value for name: john
+Enter value for dno: 11uca888
+Enter value for mark1: 89
+Enter value for mark2: 78
+old   1: insert into student8 values('&name','&dno',&mark1,&mark2)
+new   1: insert into student8 values('john','11uca888',89,78)
+
+1 row created.
+
+SQL> /
+Enter value for name: peter
+Enter value for dno: 11uca222
+Enter value for mark1: 90
+Enter value for mark2: 99
+old   1: insert into student8 values('&name','&dno',&mark1,&mark2)
+new   1: insert into student8 values('peter','11uca222',90,99)
+
+1 row created.
+
+SQL> select * from student8;
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+john          11uca888             89         78                                
+peter         11uca222             90         99                                
+
+SQL> select distinct(sname)from student8;
+
+SNAME                                                                           
+-------------                                                                   
+peter                                                                           
+john                                                                            
+
+SQL> select count(*) from student;
+select count(*) from student
+                     *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select count(*) from student8;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select * from student8 where dno='11uca888';
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+john          11uca888             89         78                                
+
+SQL> update student8 set dno='11ucs140' where sname='peter';
+
+1 row updated.
+
+SQL> select * from student8;
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+john          11uca888             89         78                                
+peter         11ucs140             90         99                                
+
+SQL> select * from student8 order by mark2 desc;
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+peter         11ucs140             90         99                                
+john          11uca888             89         78                                
+
+SQL> select * from student8 where sname like 'p%';
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+peter         11ucs140             90         99                                
+
+SQL> select * from student8 where mark2 in(1,2,45,34);
+
+no rows selected
+
+SQL> delete student8 where sname='peter';
+
+1 row deleted.
+
+SQL> select * from student8;
+
+SNAME         DNO               MARK1      MARK2                                
+------------- ------------ ---------- ----------                                
+john          11uca888             89         78                                
+
+SQL> truncate table student8;
+
+Table truncated.
+
+SQL> select * from student8;
+
+no rows selected
+
+SQL> delete from student8;
+
+0 rows deleted.
+
+SQL> select * from student8;
+
+no rows selected
+
+SQL> drop table student8;
+
+Table dropped.
+
+SQL> select* from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+STUDENTS                       TABLE                                            
+STU                            TABLE                                            
+EMPLOYEE                       TABLE                                            
+EMPLOY                         TABLE                                            
+BIN$Dj9Ghgz+S9aP0stqZ23cpg==$0 TABLE                                            
+STUDENT2                       TABLE                                            
+STUDENT3                       TABLE                                            
+STUDENT6                       TABLE                                            
+STUDENT7                       TABLE                                            
+EMP                            TABLE                                            
+PERSON                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+BIN$zMO72vpmQKilmbaBN7zy5w==$0 TABLE                                            
+STUD                           TABLE                                            
+BIN$EqK6oHAXRH+3I6D9iD9sVw==$0 TABLE                                            
+
+14 rows selected.
+
+SQL> savepoint s1;
+
+Savepoint created.
+
+SQL> select * from student5;
+select * from student5
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from student3;
+
+SNAME                DNO             MARK1      MARK2                           
+-------------------- ---------- ---------- ----------                           
+john                 101                44         77                           
+
+SQL> coomit;
+SP2-0042: unknown command "coomit" - rest of line ignored.
+SQL> commit;
+
+Commit complete.
+
+SQL> roll back s1;
+Rollback complete.
+SQL> delete from student3 where sname='john';
+
+1 row deleted.
+
+SQL> select * from student3;
+
+no rows selected
+
+SQL> roll back s1;
+Rollback complete.
+SQL> select* from student4;
+select* from student4
+             *
+ERROR at line 1:
+ORA-00942: table or view does not exist 
+
+
+SQL> select * from student3;
+
+SNAME                DNO             MARK1      MARK2                           
+-------------------- ---------- ---------- ----------                           
+john                 101                44         77                           
+
+SQL> spool off;

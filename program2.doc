@@ -1,0 +1,5 @@
+SQL> create table stu(stuno number(4),stuname varchar2(10),course varchar(10),mark number(4));
+
+Table created.
+
+SQL> spool off;

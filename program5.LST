@@ -1,0 +1,463 @@
+SQL> create table employee10(ename varchar2(15),enonumber,salary number,dept varchar2(15));
+create table employee10(ename varchar2(15),enonumber,salary number,dept varchar2(15))
+                                           *
+ERROR at line 1:
+ORA-02263: need to specify the datatype for this column 
+
+
+SQL> create table employee10(ename varchar2(15),eno number,salary number,dept varchar2(15));
+
+Table created.
+
+SQL> insert into employee10 values('&ename','&eno','&salary','&deptname');
+Enter value for ename: thrisha
+Enter value for eno: 101
+Enter value for salary: 20000
+Enter value for deptname: sales
+old   1: insert into employee10 values('&ename','&eno','&salary','&deptname')
+new   1: insert into employee10 values('thrisha','101','20000','sales')
+
+1 row created.
+
+SQL> /
+Enter value for ename: sri
+Enter value for eno: 102
+Enter value for salary: 25000
+Enter value for deptname: product
+old   1: insert into employee10 values('&ename','&eno','&salary','&deptname')
+new   1: insert into employee10 values('sri','102','25000','product')
+
+1 row created.
+
+SQL> /
+Enter value for ename: jancy
+Enter value for eno: 103
+Enter value for salary: 22000
+Enter value for deptname: sales
+old   1: insert into employee10 values('&ename','&eno','&salary','&deptname')
+new   1: insert into employee10 values('jancy','103','22000','sales')
+
+1 row created.
+
+SQL> /
+Enter value for ename: william
+Enter value for eno: 104
+Enter value for salary: 23000
+Enter value for deptname: product
+old   1: insert into employee10 values('&ename','&eno','&salary','&deptname')
+new   1: insert into employee10 values('william','104','23000','product')
+
+1 row created.
+
+SQL> select * from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                101      20000 sales                                     
+sri                    102      25000 product                                   
+jancy                  103      22000 sales                                     
+william                104      23000 product                                   
+
+SQL> update employee10 set eno=eno+500;
+
+4 rows updated.
+
+SQL> select * from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                601      20000 sales                                     
+sri                    602      25000 product                                   
+jancy                  603      22000 sales                                     
+william                604      23000 product                                   
+
+SQL> update employee10 set eno=eno-600;
+
+4 rows updated.
+
+SQL> select * from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1      20000 sales                                     
+sri                      2      25000 product                                   
+jancy                    3      22000 sales                                     
+william                  4      23000 product                                   
+
+SQL> update employee10 set salary=salary/100;
+
+4 rows updated.
+
+SQL> select * from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1        200 sales                                     
+sri                      2        250 product                                   
+jancy                    3        220 sales                                     
+william                  4        230 product                                   
+
+SQL> update employee10 set salary=salary*10;
+
+4 rows updated.
+
+SQL> select * from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1       2000 sales                                     
+sri                      2       2500 product                                   
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select * from employee10 where eno>=3;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select * from employee10 where eno<=2000
+  2  ;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1       2000 sales                                     
+sri                      2       2500 product                                   
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select * from employee10 where deptname='sales'or deptname='product';
+select * from employee10 where deptname='sales'or deptname='product'
+                                                  *
+ERROR at line 1:
+ORA-00904: "DEPTNAME": invalid identifier 
+
+
+SQL> select * from employee10 where deptname='sales' or deptname='product';
+select * from employee10 where deptname='sales' or deptname='product'
+                                                   *
+ERROR at line 1:
+ORA-00904: "DEPTNAME": invalid identifier 
+
+
+SQL> select * from employee10 where dept='sales';
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1       2000 sales                                     
+jancy                    3       2200 sales                                     
+
+SQL> select * from employee10 where dept='sales' or dept='product';
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1       2000 sales                                     
+sri                      2       2500 product                                   
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select * from employee10 where ename not like't%';
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+sri                      2       2500 product                                   
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select abs(-10)"result"from dual;
+
+    result                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select floor(34.8)"floorvalue"from dual;
+
+floorvalue                                                                      
+----------                                                                      
+        34                                                                      
+
+SQL> select ceil(8.56)"ceilvalue"from dual;
+
+ ceilvalue                                                                      
+----------                                                                      
+         9                                                                      
+
+SQL> select sin(90)"result"from dual;
+
+    result                                                                      
+----------                                                                      
+.893996664                                                                      
+
+SQL> select sqrt(200)"squareroot"from dual;
+
+squareroot                                                                      
+----------                                                                      
+14.1421356                                                                      
+
+SQL> select power(20,4)"powervalue"from dual;
+
+powervalue                                                                      
+----------                                                                      
+    160000                                                                      
+
+SQL> select exp(0)"exponentialvalue"from dual;
+
+exponentialvalue                                                                
+----------------                                                                
+               1                                                                
+
+SQL> select exp(10)"exponentialvalue"from dual;
+
+exponentialvalue                                                                
+----------------                                                                
+      22026.4658                                                                
+
+SQL> select greatest(10,88,900,4560)"greatestvalue"from dual;
+
+greatestvalue                                                                   
+-------------                                                                   
+         4560                                                                   
+
+SQL> select mod(34,6)"modulevalue"from dual;
+
+modulevalue                                                                     
+-----------                                                                     
+          4                                                                     
+
+SQL> select least(34,789,1,456780)"leastvalue"from dual;
+
+leastvalue                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select trunc(412.98,1)from dual;
+
+TRUNC(412.98,1)                                                                 
+---------------                                                                 
+          412.9                                                                 
+
+SQL> select trunc(123.123,2)from dual;
+
+TRUNC(123.123,2)                                                                
+----------------                                                                
+          123.12                                                                
+
+SQL> select floor(-168.9)from dual;
+
+FLOOR(-168.9)                                                                   
+-------------                                                                   
+         -169                                                                   
+
+SQL> select ceil(-123.4)from dual;
+
+CEIL(-123.4)                                                                    
+------------                                                                    
+        -123                                                                    
+
+SQL> select sign(-67)from dual;
+
+ SIGN(-67)                                                                      
+----------                                                                      
+        -1                                                                      
+
+SQL> selct sign(34)from dual;
+SP2-0734: unknown command beginning "selct sign..." - rest of line ignored.
+SQL> select sign(34)from dual;
+
+  SIGN(34)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select ascii('t')"asciivalue"from dual;
+
+asciivalue                                                                      
+----------                                                                      
+       116                                                                      
+
+SQL> select chr(97)"character"from dual;
+
+c                                                                               
+-                                                                               
+a                                                                               
+
+SQL> select chr(116)"character"from dual;
+
+c                                                                               
+-                                                                               
+t                                                                               
+
+SQL> select ipad('database management sysytem',17,'$')from dual;
+select ipad('database management sysytem',17,'$')from dual
+       *
+ERROR at line 1:
+ORA-00904: "IPAD": invalid identifier 
+
+
+SQL> select lpad('database management system',17,'$')from dual;
+
+LPAD('DATABASEMAN                                                               
+-----------------                                                               
+database manageme                                                               
+
+SQL> select rpad('database management system',17,'$')from dual;
+
+RPAD('DATABASEMAN                                                               
+-----------------                                                               
+database manageme                                                               
+
+SQL> select lpad('database management system',29,'$')from dual;
+
+LPAD('DATABASEMANAGEMENTSYSTE                                                   
+-----------------------------                                                   
+$$$database management system                                                   
+
+SQL> select rpad('database management system',29,'$')from dual;
+
+RPAD('DATABASEMANAGEMENTSYSTE                                                   
+-----------------------------                                                   
+database management system$$$                                                   
+
+SQL> select initcap('database')from dual;
+
+INITCAP(                                                                        
+--------                                                                        
+Database                                                                        
+
+SQL> select upper('database management system')from dual;
+
+UPPER('DATABASEMANAGEMENTS                                                      
+--------------------------                                                      
+DATABASE MANAGEMENT SYSTEM                                                      
+
+SQL> select lower('DATABASE MANAGEMENT SYSTEM')FROM DUAL;
+
+LOWER('DATABASEMANAGEMENTS                                                      
+--------------------------                                                      
+database management system                                                      
+
+SQL> select length('database management system')from dual;
+
+LENGTH('DATABASEMANAGEMENTSYSTEM')                                              
+----------------------------------                                              
+                                26                                              
+
+SQL> select replace('database','d','D')from dual;
+
+REPLACE(                                                                        
+--------                                                                        
+Database                                                                        
+
+SQL> select ltrim('database management system','system')from dual;
+
+LTRIM('DATABASEMANAGEMENTS                                                      
+--------------------------                                                      
+database management system                                                      
+
+SQL> select ltrim('alexandar grambell','grambell')from dual;
+
+LTRIM('ALEXANDA                                                                 
+---------------                                                                 
+xandar grambell                                                                 
+
+SQL> select ltrim('alexandar grambell','alexandar')from dual;
+
+LTRIM('AL                                                                       
+---------                                                                       
+ grambell                                                                       
+
+SQL> select rtrim('alaexandar grambell','grambell')from dual;
+
+RTRIM('ALAE                                                                     
+-----------                                                                     
+alaexandar                                                                      
+
+SQL> select substr('alexander grambell',7)from dual;
+
+SUBSTR('ALEX                                                                    
+------------                                                                    
+der grambell                                                                    
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+26-NOV-25                                                                       
+
+SQL> select last_day(sysdate)from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+30-NOV-25                                                                       
+
+SQL> select greatest(sysdate,'26-nov-10','26-nov-25')from dual;
+
+GREATEST(                                                                       
+---------                                                                       
+26-NOV-25                                                                       
+
+SQL> select add_months('26-nov-01',7)from dual;
+
+ADD_MONTH                                                                       
+---------                                                                       
+26-JUN-02                                                                       
+
+SQL> select next_day(sysdate,'tuesday')from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+02-DEC-25                                                                       
+
+SQL> select* from employee10;
+
+ENAME                  ENO     SALARY DEPT                                      
+--------------- ---------- ---------- ---------------                           
+thrisha                  1       2000 sales                                     
+sri                      2       2500 product                                   
+jancy                    3       2200 sales                                     
+william                  4       2300 product                                   
+
+SQL> select avg(salary)from dual;
+select avg(salary)from dual
+           *
+ERROR at line 1:
+ORA-00904: "SALARY": invalid identifier 
+
+
+SQL> select avg(salary)from employee10;
+
+AVG(SALARY)                                                                     
+-----------                                                                     
+       2250                                                                     
+
+SQL> select max(salary)from employee10;
+
+MAX(SALARY)                                                                     
+-----------                                                                     
+       2500                                                                     
+
+SQL> select sum(salary)from employee10;
+
+SUM(SALARY)                                                                     
+-----------                                                                     
+       9000                                                                     
+
+SQL> select count(eno)from employee10;
+
+COUNT(ENO)                                                                      
+----------                                                                      
+         4                                                                      
+
+SQL> select stddev(salary)from employee10;
+
+STDDEV(SALARY)                                                                  
+--------------                                                                  
+      208.1666                                                                  
+
+SQL> select variance(salary)from employee10;
+
+VARIANCE(SALARY)                                                                
+----------------                                                                
+      43333.3333                                                                
+
+SQL> spool off;

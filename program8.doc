@@ -1,0 +1,265 @@
+SQL> CREATE TABLE Student (    Name VARCHAR(50),    RegisterNumber INT PRIMARY KEY,    Department VARCHAR(50),    Subject1 INT,    Subject2 INT,    Subject3 INT,    Subject4 INT,    Subject5 INT,    Total INT);
+
+Table created.
+
+SQL> INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Arun', 101, 'CSE', 85, 78, 90, 88, 92, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Priya', 102, 'ECE', 75, 80, 70, 85, 90, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Kumar', 103, 'MECH', 60, 65, 70, 68, 72, NULL);
+INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Arun', 101, 'CSE', 85, 78, 90, 88, 92, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Priya', 102, 'ECE', 75, 80, 70, 85, 90, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Kumar', 103, 'MECH', 60, 65, 70, 68, 72, NULL)
+                                                                                                                                                                    *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Arun', 101, 'CSE', 85, 78, 90, 88, 92, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Priya', 102, 'ECE', 75, 80, 70, 85, 90, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Kumar', 103, 'MECH', 60, 65, 70, 68, 72, NULL);
+INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Arun', 101, 'CSE', 85, 78, 90, 88, 92, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Priya', 102, 'ECE', 75, 80, 70, 85, 90, NULL);INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)VALUES ('Kumar', 103, 'MECH', 60, 65, 70, 68, 72, NULL)
+                                                                                                                                                                    *
+ERROR at line 1:
+ORA-00911: invalid character 
+
+
+SQL> INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)
+  2  VALUES ('Arun', 101, 'CSE', 85, 78, 90, 88, 92, NULL);
+
+1 row created.
+
+SQL> INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)
+  2  VALUES ('Priya', 102, 'ECE', 75, 80, 70, 85, 90, NULL);
+
+1 row created.
+
+SQL> INSERT INTO Student (Name, RegisterNumber, Department, Subject1, Subject2, Subject3, Subject4, Subject5, Total)
+  2  VALUES ('Kumar', 103, 'MECH', 60, 65, 70, 68, 72, NULL);
+
+1 row created.
+
+SQL> select * from student;
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------               
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+Arun                                                          101               
+CSE                                                        85         78        
+        90         88         92                                                
+                                                                                
+Priya                                                         102               
+ECE                                                        75         80        
+        70         85         90                                                
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------               
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+                                                                                
+Kumar                                                         103               
+MECH                                                       60         65        
+        70         68         72                                                
+                                                                                
+
+SQL> UPDATE StudentSET Total = Subject1 + Subject2 + Subject3 + Subject4 + Subject5;
+UPDATE StudentSET Total = Subject1 + Subject2 + Subject3 + Subject4 + Subject5
+                        *
+ERROR at line 1:
+ORA-00971: missing SET keyword 
+
+
+SQL> UPDATE Student set total=subject1+subject2+subject3+subject4+subject5;
+
+3 rows updated.
+
+SQL> select * from student;
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------               
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+Arun                                                          101               
+CSE                                                        85         78        
+        90         88         92        433                                     
+                                                                                
+Priya                                                         102               
+ECE                                                        75         80        
+        70         85         90        400                                     
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------               
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+                                                                                
+Kumar                                                         103               
+MECH                                                       60         65        
+        70         68         72        335                                     
+                                                                                
+
+SQL> SELECT Name, RegisterNumber, TotalFROM Student;
+SELECT Name, RegisterNumber, TotalFROM Student
+                                             *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> select name,registernumber,total from student;
+
+NAME                                               REGISTERNUMBER      TOTAL    
+-------------------------------------------------- -------------- ----------    
+Arun                                                          101        433    
+Priya                                                         102        400    
+Kumar                                                         103        335    
+
+SQL> CREATE TABLE Student (    name VARCHAR(50),    registernumber VARCHAR(20) PRIMARY KEY,    department VARCHAR(50),    subject1 INT,    subject2 INT,    subject3 INT,    subject4 INT,    subject5 INT,    total INT);
+CREATE TABLE Student (    name VARCHAR(50),    registernumber VARCHAR(20) PRIMARY KEY,    department VARCHAR(50),    subject1 INT,    subject2 INT,    subject3 INT,    subject4 INT,    subject5 INT,    total INT)
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object 
+
+
+SQL> create table student11(name varchar(50),registernumber varchar(20) primary key,department varchar(50),subject1 int,subject2 int,subject3 int,subject4 int,subject5 int,total int);
+
+Table created.
+
+SQL> INSERT INTO Student (name, registernumber, department, subject1, subject2, subject3, subject4, subject5, total)VALUES ('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),('Kumar', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400),('Priya', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432),('Meena', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 35
+  2  
+SQL> INSERT INTO Student (name, registernumber, department, subject1, subject2, subject3, subject4, subject5, total)VALUES ('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),('Kumar', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400),('Priya', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432),('Meena', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 350);
+INSERT INTO Student (name, registernumber, department, subject1, subject2, subject3, subject4, subject5, total)VALUES ('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),('Kumar', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400),('Priya', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432),('Meena', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 350)
+                                                                                                                                                                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO Student11 (name, registernumber, department, subject1, subject2, subject3, subject4, subject5, total)
+  2  VALUES
+  3  ('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),
+  4  ('Kumar', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400),
+  5  ('Priya', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432),
+  6  ('Meena', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 350);
+('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),
+                                                    *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> INSERT INTO Student11 (name, registernumber, department, subject1, subject2, subject3, subject4, subject5, total)
+  2  VALUES
+  3  ('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),
+  4  ('Kumar', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400),
+  5  ('Priya', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432),
+  6  ('Meena', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 350);
+('Arun', '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433),
+                                                    *
+ERROR at line 3:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> insert into student11(name,registernumber,department,subject1,subject2,subject3,subject4,subjec
+  2  
+SQL> insert into student11 values('&name','&register number','&department','&subject1','&subject2','&subject3','&subject4','&subject5',total);
+Enter value for name: arun
+Enter value for register: 25pai801
+Enter value for department: cse
+Enter value for subject1: 78
+Enter value for subject2: 89
+Enter value for subject3: 90
+Enter value for subject4: 78
+Enter value for subject5: 55
+old   1: insert into student11 values('&name','&register number','&department','&subject1','&subject2','&subject3','&subject4','&subject5',total)
+new   1: insert into student11 values('arun','25pai801 number','cse','78','89','90','78','55',total)
+insert into student11 values('arun','25pai801 number','cse','78','89','90','78','55',total)
+                                                                                     *
+ERROR at line 1:
+ORA-00984: column not allowed here 
+
+
+SQL> INSERT INTO STUDENT11 (NAME, REGISTERNUMBER, DEPARTMENT, SUBJECT1, SUBJECT2, SUBJECT3, SUBJECT4, SUBJECT5, TOTAL)
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00926: missing VALUES keyword 
+
+
+SQL> INSERT INTO STUDENT11 (NAME, REGISTERNUMBER, DEPARTMENT, SUBJECT1, SUBJECT2, SUBJECT3, SUBJECT4, SUBJECT5, TOTAL)
+  2  VALUES ('ARUN',  '25PAI800', 'CSE', 85, 78, 90, 88, 92, 433);
+
+1 row created.
+
+SQL> INSERT INTO STUDENT11 (NAME, REGISTERNUMBER, DEPARTMENT, SUBJECT1, SUBJECT2, SUBJECT3, SUBJECT4, SUBJECT5, TOTAL)
+  2  VALUES ('KUMAR', '25PAI801', 'ECE', 75, 80, 70, 85, 90, 400);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT11 (NAME, REGISTERNUMBER, DEPARTMENT, SUBJECT1, SUBJECT2, SUBJECT3, SUBJECT4, SUBJECT5, TOTAL)
+  2  VALUES ('PRIYA', '25PAI802', 'IT', 88, 92, 85, 80, 87, 432);
+
+1 row created.
+
+SQL> 
+SQL> INSERT INTO STUDENT11 (NAME, REGISTERNUMBER, DEPARTMENT, SUBJECT1, SUBJECT2, SUBJECT3, SUBJECT4, SUBJECT5, TOTAL)
+  2  VALUES ('MEENA', '25PAI810', 'EEE', 70, 65, 72, 68, 75, 350);
+
+1 row created.
+
+SQL> UPDATE STUDENT11
+  2  SET NAME = 'VIGNESH'
+  3  WHERE REGISTERNUMBER = '25PAI801';
+
+1 row updated.
+
+SQL> DELETE FROM STUDENT11WHERE REGISTERNUMBER = '25PAI810';
+DELETE FROM STUDENT11WHERE REGISTERNUMBER = '25PAI810'
+                                          *
+ERROR at line 1:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> delete from student11 where registernumber='25pai810';
+
+0 rows deleted.
+
+SQL> SELECT * FROM STUDENT11;
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------------         
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+ARUN                                               25PAI800                     
+CSE                                                        85         78        
+        90         88         92        433                                     
+                                                                                
+VIGNESH                                            25PAI801                     
+ECE                                                        75         80        
+        70         85         90        400                                     
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------------         
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+                                                                                
+PRIYA                                              25PAI802                     
+IT                                                         88         92        
+        85         80         87        432                                     
+                                                                                
+MEENA                                              25PAI810                     
+EEE                                                        70         65        
+
+NAME                                               REGISTERNUMBER               
+-------------------------------------------------- --------------------         
+DEPARTMENT                                           SUBJECT1   SUBJECT2        
+-------------------------------------------------- ---------- ----------        
+  SUBJECT3   SUBJECT4   SUBJECT5      TOTAL                                     
+---------- ---------- ---------- ----------                                     
+        72         68         75        350                                     
+                                                                                
+
+SQL> spool off;
