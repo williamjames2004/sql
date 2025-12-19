@@ -1,0 +1,11 @@
+SQL> "U:/nested.doc"
+SP2-0734: unknown command beginning ""U:/nested..." - rest of line ignored.
+SQL> U:/nested.doc
+SP2-0734: unknown command beginning "U:/nested...." - rest of line ignored.
+SQL> "U:/nested.do"
+SP2-0734: unknown command beginning ""U:/nested..." - rest of line ignored.
+SQL> "U:/program4.doc"
+SP2-0734: unknown command beginning ""U:/progra..." - rest of line ignored.
+SP2-0044: For a list of known commands enter HELP
+and to leave enter EXIT.
+SQL> 
