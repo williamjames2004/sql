@@ -1,0 +1,154 @@
+SQL> create table csdept(sname varchar2(20),dno varchar2(10),class varchar(6),elect varchar2(2));
+
+Table created.
+
+SQL> insert into csdept values('&name','&dno','&class','&elect');
+Enter value for name: ashika
+Enter value for dno: 801
+Enter value for class: msc
+Enter value for elect: ic
+old   1: insert into csdept values('&name','&dno','&class','&elect')
+new   1: insert into csdept values('ashika','801','msc','ic')
+
+1 row created.
+
+SQL> /
+Enter value for name: cinthiya
+Enter value for dno: 802
+Enter value for class: bsc
+Enter value for elect: wt
+old   1: insert into csdept values('&name','&dno','&class','&elect')
+new   1: insert into csdept values('cinthiya','802','bsc','wt')
+
+1 row created.
+
+SQL> /
+Enter value for name: deepika
+Enter value for dno: 803
+Enter value for class: mba
+Enter value for elect: qa
+old   1: insert into csdept values('&name','&dno','&class','&elect')
+new   1: insert into csdept values('deepika','803','mba','qa')
+
+1 row created.
+
+SQL> /
+Enter value for name: dhanila
+Enter value for dno: 804
+Enter value for class: bca
+Enter value for elect: oa
+old   1: insert into csdept values('&name','&dno','&class','&elect')
+new   1: insert into csdept values('dhanila','804','bca','oa')
+
+1 row created.
+
+SQL> /
+Enter value for name: jai
+Enter value for dno: 805
+Enter value for class: msc
+Enter value for elect: wt
+old   1: insert into csdept values('&name','&dno','&class','&elect')
+new   1: insert into csdept values('jai','805','msc','wt')
+
+1 row created.
+
+SQL> select * from csdept;
+
+SNAME                DNO        CLASS  EL                                       
+-------------------- ---------- ------ --                                       
+ashika               801        msc    ic                                       
+cinthiya             802        bsc    wt                                       
+deepika              803        mba    qa                                       
+dhanila              804        bca    oa                                       
+jai                  805        msc    wt                                       
+
+
+SQL> create table itdept(sname varchar2(20),dno varchar2(10),class varchar2(6),elect varchar2(2));
+
+Table created.
+
+SQL> insert into itdept values('&name','&dno','&class','&elect');
+Enter value for name: ashika
+Enter value for dno: 806
+Enter value for class: hrm
+Enter value for elect: wt
+old   1: insert into itdept values('&name','&dno','&class','&elect')
+new   1: insert into itdept values('ashika','806','hrm','wt')
+
+1 row created.
+
+SQL> /
+Enter value for name: cinthiya
+Enter value for dno: 806
+Enter value for class: bsc
+Enter value for elect: wt
+old   1: insert into itdept values('&name','&dno','&class','&elect')
+new   1: insert into itdept values('cinthiya','806','bsc','wt')
+
+1 row created.
+
+SQL> /
+Enter value for name: vinoth
+Enter value for dno: 808
+Enter value for class: bca
+Enter value for elect: ic
+old   1: insert into itdept values('&name','&dno','&class','&elect')
+new   1: insert into itdept values('vinoth','808','bca','ic')
+
+1 row created.
+
+SQL> /
+Enter value for name: kavi
+Enter value for dno: 807
+Enter value for class: bca
+Enter value for elect: oa
+old   1: insert into itdept values('&name','&dno','&class','&elect')
+new   1: insert into itdept values('kavi','807','bca','oa')
+
+1 row created.
+
+SQL> /
+Enter value for name: kalai
+Enter value for dno: 809
+Enter value for class: bca
+Enter value for elect: ic
+old   1: insert into itdept values('&name','&dno','&class','&elect')
+new   1: insert into itdept values('kalai','809','bca','ic')
+
+1 row created.
+
+SQL> select * from itdept;
+
+SNAME                DNO        CLASS  EL                                       
+-------------------- ---------- ------ --                                       
+ashika               806        hrm    wt                                       
+cinthiya             806        bsc    wt                                       
+vinoth               808        bca    ic                                       
+kavi                 807        bca    oa                                       
+kalai                809        bca    ic                                       
+
+SQL> select elect from csdept union select elect from itdept;
+
+EL                                                                              
+--                                                                              
+ic                                                                              
+oa                                                                              
+qa                                                                              
+wt                                                                              
+
+SQL> select elect from csdept minus select elect from itdept;
+
+EL                                                                              
+--                                                                              
+qa                                                                              
+
+
+SQL> create table st(sname varchar2(20),dno varchar2(10));
+
+Table created.
+
+SQL> create table st1(sname varchar2(20),dno varchar2(10));
+
+Table created.
+
+SQL> spool off;

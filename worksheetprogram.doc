@@ -1,0 +1,114 @@
+SQL> create table s(name varchar2(20),regno varchar2(20),dept varchar2(20),sub1 int,sub2 int,sub3 int,sub4 int,sub5 int,total int);
+
+Table created.
+
+SQL> insert into s(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('arun','21cs001','cse',85,78,92,88,80,null);
+
+1 row created.
+
+SQL> /
+
+1 row created.
+
+SQL>  insert into s(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('arun','21cs001','cse',85,
+  2  
+SQL> 
+SQL>  insert into s(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('arun','21cs001','cse',85
+  2  
+SQL>  insert into s(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('kavya','21cse002','cse',90,82,84,79,88,null);
+
+1 row created.
+
+SQL>  insert into s(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('ravi','21cs003','ece',70,75,92,88,80,null);
+
+1 row created.
+
+SQL> SELECT * FROM student;
+
+no rows selected
+
+SQL> select * from s;
+
+NAME                 REGNO                DEPT                       SUB1       
+-------------------- -------------------- -------------------- ----------       
+      SUB2       SUB3       SUB4       SUB5      TOTAL                          
+---------- ---------- ---------- ---------- ----------                          
+arun                 21cs001              cse                          85       
+        78         92         88         80                                     
+                                                                                
+arun                 21cs001              cse                          85       
+        78         92         88         80                                     
+                                                                                
+kavya                21cse002             cse                          90       
+        82         84         79         88                                     
+                                                                                
+
+NAME                 REGNO                DEPT                       SUB1       
+-------------------- -------------------- -------------------- ----------       
+      SUB2       SUB3       SUB4       SUB5      TOTAL                          
+---------- ---------- ---------- ---------- ----------                          
+ravi                 21cs003              ece                          70       
+        75         92         88         80                                     
+                                                                                
+
+SQL> update s set total=sub1+sub2+sub3+sub4+sub5;
+
+4 rows updated.
+
+SQL> select name,regno,total from s;
+
+NAME                 REGNO                     TOTAL                            
+-------------------- -------------------- ----------                            
+arun                 21cs001                     423                            
+arun                 21cs001                     423                            
+kavya                21cse002                    423                            
+ravi                 21cs003                     405                            
+
+
+
+SQL> create table s2(name varchar2(20),regno varchar2(20) primary key,dept varchar2(20),sub1 int,sub2 int,sub3 int,sub4 int ,sub5 int,total int);
+
+Table created.
+
+
+SQL> insert into s2(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('sai','25pai801','ai',85,78,90,88,92,433);
+
+1 row created.
+
+SQL> insert into s2(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('arun','25pai802','ai',75,80,82,79,85,401);
+
+1 row created.
+
+SQL> insert into s2(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('kumar','25pai810','ai',60,65,70,68,72,335);
+
+1 row created.
+
+SQL> insert into s2(name,regno,dept,sub1,sub2,sub3,sub4,sub5,total) values('ashi','25pai811','it',88,90,92,84,86,440);
+
+1 row created.
+
+SQL> update s2 set name='sai' where regno='25pai801';
+
+1 row updated.
+
+SQL> delete from s2 where regno='25pai810';
+
+1 row deleted.
+
+SQL> select * from s2;
+
+NAME                 REGNO                DEPT                       SUB1       
+-------------------- -------------------- -------------------- ----------       
+      SUB2       SUB3       SUB4       SUB5      TOTAL                          
+---------- ---------- ---------- ---------- ----------                          
+sai                  25pai801             ai                           85       
+        78         90         88         92        433                          
+                                                                                
+arun                 25pai802             ai                           75       
+        80         82         79         85        401                          
+                                                                                
+ashi                 25pai811             it                           88       
+        90         92         84         86        440                          
+                                                                                
+
+SQL> spool off;

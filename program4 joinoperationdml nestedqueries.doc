@@ -1,0 +1,314 @@
+SQL> create table stuu(sname varchar2(20),dno varchar2(10));
+
+Table created.
+
+SQL> create table stud(sname varchar2(20),dept varchar2(10),marks number);
+
+Table created.
+
+SQL> insert into stuu values('&sname','&dno');
+Enter value for sname: mohan
+Enter value for dno: 101
+old   1: insert into stuu values('&sname','&dno')
+new   1: insert into stuu values('mohan','101')
+
+1 row created.
+
+SQL> /
+Enter value for sname: anand
+Enter value for dno: 102
+old   1: insert into stuu values('&sname','&dno')
+new   1: insert into stuu values('anand','102')
+
+1 row created.
+
+SQL> /
+Enter value for sname: kumar
+Enter value for dno: 103
+old   1: insert into stuu values('&sname','&dno')
+new   1: insert into stuu values('kumar','103')
+
+1 row created.
+
+SQL> /
+Enter value for sname: ravi
+Enter value for dno: 104
+old   1: insert into stuu values('&sname','&dno')
+new   1: insert into stuu values('ravi','104')
+
+1 row created.
+
+SQL> select * from stuu;
+
+SNAME                DNO                                                        
+-------------------- ----------                                                 
+mohan                101                                                        
+anand                102                                                        
+kumar                103                                                        
+ravi                 104                                                        
+
+SQL> insert into stud values('&sname','&dept',&marks);
+Enter value for sname: mohan
+Enter value for dept: cs
+Enter value for marks: 700
+old   1: insert into stud values('&sname','&dept',&marks)
+new   1: insert into stud values('mohan','cs',700)
+
+1 row created.
+
+SQL> /
+Enter value for sname: anand
+Enter value for dept: it
+Enter value for marks: 680
+old   1: insert into stud values('&sname','&dept',&marks)
+new   1: insert into stud values('anand','it',680)
+
+1 row created.
+
+SQL> /
+Enter value for sname: vinoth
+Enter value for dept: cs
+Enter value for marks: 650
+old   1: insert into stud values('&sname','&dept',&marks)
+new   1: insert into stud values('vinoth','cs',650)
+
+1 row created.
+
+SQL> /
+Enter value for sname: ravi
+Enter value for dept: it
+Enter value for marks: 700
+old   1: insert into stud values('&sname','&dept',&marks)
+new   1: insert into stud values('ravi','it',700)
+
+1 row created.
+SQL> select * from stud;
+
+SNAME                DEPT            MARKS                                      
+-------------------- ---------- ----------                                      
+mohan                cs                700                                      
+anand                it                680                                      
+vinoth               cs                650                                      
+ravi                 it                700                                      
+
+SQL> select stuu.sname,dept from stuu join stud on (stuu.sname=stud.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+mohan                cs                                                         
+anand                it                                                         
+ravi                 it                                                         
+
+SQL> select stuu.sname,dept from stuu inner join stud on(stuu.sname=stud.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+mohan                cs                                                         
+anand                it                                                         
+ravi                 it                                                         
+
+SQL> select stuu.sname,dept from stuu left outer join stud on (stuu.sname=stud.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+mohan                cs                                                         
+anand                it                                                         
+ravi                 it                                                         
+kumar                                                                          
+
+SQL> select stuu.sname,dept from stuu right outer join stud on(stuu.sname=stud.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+mohan                cs                                                         
+anand                it                                                         
+ravi                 it                                                         
+                     cs                                                         
+SQL> select stuu.sname,dept from stuu full outer join stud on(stuu.sname=stud.sname);
+
+SNAME                DEPT                                                       
+-------------------- ----------                                                 
+mohan                cs                                                         
+anand                it                                                         
+ravi                 it                                                         
+kumar                                                                           
+                     cs                                                         
+
+SQL> create table sstu(sname varchar2(20),place varchar2(20));
+
+Table created.
+
+SQL> insert nto sstu values('&sname','&place');
+Enter value for sname: prajan
+Enter value for place: chennai
+old   1: insert nto sstu values('&sname','&place')
+new   1: insert nto sstu values('prajan','chennai')
+insert nto sstu values('prajan','chennai')
+       *
+ERROR at line 1:
+ORA-00925: missing INTO keyword 
+
+
+SQL> 
+SQL>  insert into sstu values('&sname','&place');
+Enter value for sname: prajan
+Enter value for place: chennai
+old   1:  insert into sstu values('&sname','&place')
+new   1:  insert into sstu values('prajan','chennai')
+
+1 row created.
+
+SQL> /
+Enter value for sname: anand
+Enter value for place: chennai
+old   1:  insert into sstu values('&sname','&place')
+new   1:  insert into sstu values('anand','chennai')
+
+1 row created.
+
+SQL> /
+Enter value for sname: kumar
+Enter value for place: chennai
+old   1:  insert into sstu values('&sname','&place')
+new   1:  insert into sstu values('kumar','chennai')
+
+1 row created.
+
+SQL> /
+Enter value for sname: ravi
+Enter value for place: chennai
+old   1:  insert into sstu values('&sname','&place')
+new   1:  insert into sstu values('ravi','chennai')
+
+1 row created.
+
+SQL> select * from sstu;
+
+SNAME                PLACE                                                      
+-------------------- --------------------                                       
+prajan               chennai                                                    
+anand                chennai                                                    
+kumar                chennai                                                    
+ravi                 chennai                                                    
+
+SQL> create table sstu2(sname varchar2(10),dept varchar2(10),marks number(10));
+
+Table created.
+
+SQL> insert into sstu2 values('&sname','&dept',&marks);
+Enter value for sname: prajan
+Enter value for dept: cse
+Enter value for marks: 700
+old   1: insert into sstu2 values('&sname','&dept',&marks)
+new   1: insert into sstu2 values('prajan','cse',700)
+
+1 row created.
+
+SQL> /
+Enter value for sname: anand
+Enter value for dept: it
+Enter value for marks: 600
+old   1: insert into sstu2 values('&sname','&dept',&marks)
+new   1: insert into sstu2 values('anand','it',600)
+
+1 row created.
+
+SQL> /
+Enter value for sname: vasu
+Enter value for dept: cse
+Enter value for marks: 680
+old   1: insert into sstu2 values('&sname','&dept',&marks)
+new   1: insert into sstu2 values('vasu','cse',680)
+
+1 row created.
+
+SQL> /
+Enter value for sname: ravi
+Enter value for dept: it
+Enter value for marks: 600
+old   1: insert into sstu2 values('&sname','&dept',&marks)
+new   1: insert into sstu2 values('ravi','it',600)
+
+1 row created.
+
+SQL> select * from sstu2;
+
+SNAME      DEPT            MARKS                                                
+---------- ---------- ----------                                                
+prajan     cse               700                                                
+anand      it                600                                                
+vasu       cse               680                                                
+ravi       it                600                                                
+
+SQL> select sname from sstu where sstu.sname in(select sstu2.sname from sstu2);
+
+SNAME                                                                           
+--------------------                                                            
+prajan                                                                          
+anand                                                                           
+ravi                                                                            
+
+SQL>  select sname from sstu where sstu.sname not in(select sstu2.sname from sstu2);
+
+SNAME                                                                           
+--------------------                                                            
+kumar                                                                           
+
+SQL> select sname from sstu2 where marks>some(select marks from sstu2 where dept='cse');
+
+SNAME                                                                           
+----------                                                                      
+prajan                                                                          
+
+SQL>  select sname from sstu2 where marks>
+  2  
+SQL>  select sname from sstu2 where marks>
+  2  
+SQL> select sname from sstu2 where marks>=some(select marks from sstu2 where dept='cse');
+
+SNAME                                                                           
+----------                                                                      
+prajan                                                                          
+vasu                                                                            
+
+SQL> select sname from sstu2 where marks
+  2  
+SQL>  select sname from sstu2 where marks>any(select marks from sstu2 where dept='cse');
+
+SNAME                                                                           
+----------                                                                      
+prajan                                                                          
+
+SQL>  select sname from sstu2 where marks>=any(select marks from sstu2 where dept='cse');
+
+SNAME                                                                           
+----------                                                                      
+prajan                                                                          
+vasu                                                                            
+
+SQL> select sname from sstu2 where marks>all(select marks from sstu2 where dept='cse');
+
+no rows selected
+
+SQL>  select sname from sstu2 where marks<all(select marks from sstu2 where dept='cse');
+
+SNAME                                                                           
+----------                                                                      
+anand                                                                           
+ravi                                                                            
+
+SQL>  select sname from sstu where exists(select sstu2.sname from sstu2 where sstu.sname= sstu2.sname);
+
+SNAME                                                                           
+--------------------                                                            
+prajan                                                                          
+anand                                                                           
+ravi                                                                            
+
+SQL>  select sname from sstu where not exists(select sstu2.sname from sstu2 where sstu.sname= sstu2.sname);
+
+SNAME                                                                           
+--------------------                                                            
+kumar                                                                           
+
+SQL> spool off;

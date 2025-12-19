@@ -1,0 +1,228 @@
+SQL> create table stu(sname varchar2(20),dno varchar2(10)primary key,m1 number,m2 number);
+
+Table created.
+
+SQL> insert into stu values('&sname','&dno',&m1,&m2);
+Enter value for sname: sri
+Enter value for dno: 801
+Enter value for m1: 89
+Enter value for m2: 99
+old   1: insert into stu values('&sname','&dno',&m1,&m2)
+new   1: insert into stu values('sri','801',89,99)
+
+1 row created.
+
+SQL> /
+Enter value for sname: usha
+Enter value for dno: 802
+Enter value for m1: 87
+Enter value for m2: 97
+old   1: insert into stu values('&sname','&dno',&m1,&m2)
+new   1: insert into stu values('usha','802',87,97)
+
+1 row created.
+
+SQL> /
+Enter value for sname: sai
+Enter value for dno: 803
+Enter value for m1: 98
+Enter value for m2: 86
+old   1: insert into stu values('&sname','&dno',&m1,&m2)
+new   1: insert into stu values('sai','803',98,86)
+
+1 row created.
+
+SQL> create table stu6(sname varchar2(20),dno varchar2(10),m1 number,m2 number null);
+
+Table created.
+
+SQL> insert into stu6 values('&sname','&dno',&m1,&m2);
+Enter value for sname: muthu
+Enter value for dno: 804
+Enter value for m1: 89
+Enter value for m2: null
+old   1: insert into stu6 values('&sname','&dno',&m1,&m2)
+new   1: insert into stu6 values('muthu','804',89,null)
+
+1 row created.
+
+SQL> select * from stu6;
+
+SNAME                DNO                M1         M2                           
+-------------------- ---------- ---------- ----------                           
+muthu                804                89                                      
+
+
+
+SQL> create table stu7(sname varchar2(20),dno varchar2(10),m1 number,m2 number,maxmark number default 200);
+
+Table created.
+
+SQL> insert into stu7(sname,dno,m1,m2)values('nitish',805,45,56);
+
+1 row created.
+
+SQL> select *from stu7;
+
+SNAME                DNO                M1         M2    MAXMARK                
+-------------------- ---------- ---------- ---------- ----------                
+nitish               805                45         56        200                
+
+SQL> create table stu8(sname varchar2(13),dno varchar2(12),m1 number,m2 number);
+
+Table created.
+
+SQL> insert into stu8(sname,dno,m1,m2)values('mohan',807,78,90);
+
+1 row created.
+
+SQL> select * from stu8;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+mohan         807                  78         90                                
+
+SQL> insert into stu8 values('&sname','&dno',&m1,&m2);
+Enter value for sname: kumar
+Enter value for dno: 808
+Enter value for m1: 78
+Enter value for m2: 45
+old   1: insert into stu8 values('&sname','&dno',&m1,&m2)
+new   1: insert into stu8 values('kumar','808',78,45)
+
+1 row created.
+
+SQL> select * from stu8;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+mohan         807                  78         90                                
+kumar         808                  78         45                                
+
+SQL> select distinct(sname) from stu8;
+
+SNAME                                                                           
+-------------                                                                   
+mohan                                                                           
+kumar                                                                           
+
+SQL> select count(*) from stu8;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         2                                                                      
+
+SQL> select * from stu8 where dno=808;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+kumar         808                  78         45                                
+
+SQL> update stu8 set dno=808 where sname='kumar';
+
+1 row updated.
+
+SQL> select * from stu8;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+mohan         807                  78         90                                
+kumar         808                  78         45                                
+
+SQL> update stu8 set sname='kavitha',dno=809 where sname='kumar';
+
+1 row updated.
+
+SQL> select * from stu8;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+mohan         807                  78         90                                
+kavitha       809                  78         45                                
+
+SQL> select * from stu8 order by m2 asc;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+kavitha       809                  78         45                                
+mohan         807                  78         90                                
+
+SQL> select * from stu8 where sname like 'k%';
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+kavitha       809                  78         45                                
+
+SQL> select * from stu8 where m2 in(1,2,45,34);
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+kavitha       809                  78         45                                
+
+SQL> delete stu8 where sname='mohan';
+
+1 row deleted.
+
+SQL> select * from stu8;
+
+SNAME         DNO                  M1         M2                                
+------------- ------------ ---------- ----------                                
+kavitha       809                  78         45                                
+
+SQL> truncate table stu8;
+
+Table truncated.
+
+SQL> select * from stu8;
+
+no rows selected
+
+SQL> delete from stu8;
+
+0 rows deleted.
+
+SQL> select * from stu8;
+
+no rows selected
+
+SQL> drop table stu8;
+
+Table dropped.
+
+SQL> select * from tab;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+EMPLOYEE                       TABLE                                            
+EMP                            TABLE                                            
+STAFF                          TABLE                                            
+STU2                           TABLE                                            
+STU                            TABLE                                            
+STU6                           TABLE                                            
+STUDENT                        TABLE                                            
+STUDENTS                       TABLE                                            
+STUDENTS1                      TABLE                                            
+STU7                           TABLE                                            
+BIN$kSq/vgqXQv2YNiW5dJcEmg==$0 TABLE                                            
+
+11 rows selected.
+
+SQL> savepoint s1;
+
+Savepoint created.
+
+SQL> create table stu5(sname varchar2(20),dn0 varchar2(10),m1 number not null,m2 number);
+
+Table created.
+
+SQL> insert into stu5 values('&sname','&dno',&m1,&m2);
+Enter value for sname: rajesh
+Enter value for dno: 810
+Enter value for m1: 90
+Enter value for m2: 98
+old   1: insert into stu5 values('&sname','&dno',&m1,&m2)
+new   1: insert into stu5 values('rajesh','810',90,98)
+
+1 row created.
+
+SQL> spool off;

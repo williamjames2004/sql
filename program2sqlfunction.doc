@@ -1,0 +1,181 @@
+SQL> select abs(-10)"result"from dual;
+
+    result                                                                      
+----------                                                                      
+        10                                                                      
+
+SQL> select ceil(2.34)"ceil value" from dual;
+
+ceil value                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> select sin(90)"result" from dual;
+
+    result                                                                      
+----------                                                                      
+.893996664                                                                      
+
+SQL> select sqrt(100)" square root" from dual;
+
+ square root                                                                    
+------------                                                                    
+          10                                                                    
+
+SQL> select power(10,3)"power value" from dual;
+
+power value                                                                     
+-----------                                                                     
+       1000                                                                     
+
+
+SQL> select exp(0) "exponential value" from dual;
+
+exponential value                                                               
+-----------------                                                               
+                1                                                               
+
+SQL>  select greatest(12,34,456,6789)"greatest value" from dual;
+
+greatest value                                                                  
+--------------                                                                  
+          6789                                                                  
+
+SQL> select mod(15,2)"module value" from dual;
+
+module value                                                                    
+------------                                                                    
+           1                                                                    
+
+SQL> select least(12,34,456,6789)"least value" from dual;
+
+least value                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> select trunc(123.123,2) from dual;
+
+TRUNC(123.123,2)                                                                
+----------------                                                                
+          123.12                                                                
+
+SQL> select floor(-149.7) from dual;
+
+FLOOR(-149.7)                                                                   
+-------------                                                                   
+         -150                                                                   
+
+SQL> select sign(-45) from dual;
+
+ SIGN(-45)                                                                      
+----------                                                                      
+        -1                                                                      
+
+SQL> select sign(12) from dual;
+
+  SIGN(12)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> select ascii('s')"ascii value" from dual;
+
+ascii value                                                                     
+-----------                                                                     
+        115                                                                     
+
+SQL> select chr(97)"character" from dual;
+
+c                                                                               
+-                                                                               
+a                                                                               
+
+SQL> select lpad('I LOVE INDIA',15,'$') from dual;
+
+LPAD('ILOVEINDI                                                                 
+---------------                                                                 
+$$$I LOVE INDIA                                                                 
+
+SQL> select rpad('I LOVE INDIA',15,'$') from dual;
+
+RPAD('ILOVEINDI                                                                 
+---------------                                                                 
+I LOVE INDIA$$$                                                                 
+
+SQL> select initcap('india') from dual;
+
+INITC                                                                           
+-----                                                                           
+India                                                                           
+
+SQL> select upper('jaihind') from dual;
+
+UPPER('                                                                         
+-------                                                                         
+JAIHIND                                                                         
+
+SQL> select lower('JOSEPH') from dual;
+
+LOWER(                                                                          
+------                                                                          
+joseph                                                                          
+
+SQL> select length('CINTHIYA SRI') from dual;
+
+LENGTH('CINTHIYASRI')                                                           
+---------------------                                                           
+                   12                                                           
+
+SQL> select replace('tamilnadu','t','T') from dual;
+
+REPLACE('                                                                       
+---------                                                                       
+Tamilnadu                                                                       
+
+SQL> select ltrim('cinthiya sri','cinthiya') from dual;
+
+LTRI                                                                            
+----                                                                            
+ sri                                                                            
+
+SQL> select rtrim('cinthiya sri','sri') from dual;
+
+RTRIM('CI                                                                       
+---------                                                                       
+cinthiya                                                                        
+
+SQL> select substr('cinthiya sri',7) from dual;
+
+SUBSTR                                                                          
+------                                                                          
+ya sri                                                                          
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+04-DEC-25                                                                       
+
+SQL> select last_day(sysdate) from dual;
+
+LAST_DAY(                                                                       
+---------                                                                       
+31-DEC-25                                                                       
+
+SQL> select greatest(sysdate,'07-mar-10','07-mar-13') from dual;
+
+GREATEST(                                                                       
+---------                                                                       
+04-DEC-25                                                                       
+
+SQL> select next_day(sysdate,'sunday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+07-DEC-25                                                                      
+SQL> select next_day(sysdate,'tuesday') from dual;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+09-DEC-25                                                                       
+
+SQL> spool off;
